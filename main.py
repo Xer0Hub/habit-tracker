@@ -1,10 +1,12 @@
 import requests
+from urllib3 import request
 
 #CONSTANTS
 USERNAME = "xer0"
 TOKEN = "djaskflj2r32fjsdklf3"
 
 pixela_endpoint = "https://pixe.la/v1/users"
+
 user_params = {
     "token": TOKEN,
     "username": USERNAME,
@@ -15,15 +17,21 @@ user_params = {
 # response = requests.post(url=pixela_endpoint, json=user_params)
 # print(response.text)
 
-graph_endpoint = f"{pixela_endpoint}/{USERNAME}/graph"
+graph_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs"
+
 graph_config = {
     "id": "id1",
-    "name": "my_first_graph",
-    "unit": "hours",
-    "type": 
-    "color":
-
+    "name": "My Coding Tracker",
+    "unit": "Km",
+    "type": "int",
+    "color": "shibafu"
 }
 
-requests.post()
+headers = {
+    "X-USER-TOKEN": TOKEN
+}
+
+response = requests.post(url=graph_endpoint, json=graph_config, headers=headers)
+
+print(response.text)
 
