@@ -1,9 +1,17 @@
+from http.client import responses
+
 import requests
-from urllib3 import request
+import datetime
 
 #CONSTANTS
 USERNAME = "xer0"
 TOKEN = "djaskflj2r32fjsdklf3"
+GRAPH_ID = "id2"
+
+#VARIABLES
+today_date = datetime.datetime.now()
+formatted_date = today_date.strftime("%Y%m%d")
+change_date = "20250511"
 
 pixela_endpoint = "https://pixe.la/v1/users"
 
@@ -17,22 +25,40 @@ user_params = {
 # response = requests.post(url=pixela_endpoint, json=user_params)
 # print(response.text)
 
-graph_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs"
-
 graph_config = {
-    "id": "id1",
+    "id": GRAPH_ID,
     "name": "My Coding Tracker",
-    "unit": "Km",
+    "unit": "Hours",
     "type": "int",
     "color": "shibafu"
+}
+
+pixel_data = {
+    "date": formatted_date,
+    "quantity": "1"
 }
 
 headers = {
     "X-USER-TOKEN": TOKEN
 }
 
-response = requests.post(url=graph_endpoint, json=graph_config, headers=headers)
+#------------------POST METHOD
+# pixel_creation = f"{pixela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}"
+# post_pixel = requests.post(url=pixel_creation, json=pixel_data, headers=headers)
+# print(post_pixel.text)
 
+
+#------------------PUT METHOD
+# new_pixel_data = {
+#     "quantity": "1",
+# }
+#
+# update_pixel = f"{pixela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}/{change_date}"
+#
+# response = requests.put(url=update_pixel, json= new_pixel_data, headers=headers)
+# print(response.text)
+
+#------------------DEL METHOD
+delete_pixel = f"{pixela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}/{formatted_date}"
+response = requests.delete(url=delete_pixel, headers=headers)
 print(response.text)
-
-
