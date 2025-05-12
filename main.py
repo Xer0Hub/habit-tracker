@@ -4,14 +4,14 @@ import requests
 import datetime
 
 #CONSTANTS
-USERNAME = "xer0"
-TOKEN = "djaskflj2r32fjsdklf3"
-GRAPH_ID = "id2"
+USERNAME = "YOUR USERNAME"
+TOKEN = "YOUR TOKEN"
+GRAPH_ID = "YOUR GRAPH"
 
 #VARIABLES
 today_date = datetime.datetime.now()
 formatted_date = today_date.strftime("%Y%m%d")
-change_date = "20250511"
+change_date = "MODIFIED DATE"
 
 pixela_endpoint = "https://pixe.la/v1/users"
 
@@ -27,7 +27,7 @@ user_params = {
 
 graph_config = {
     "id": GRAPH_ID,
-    "name": "My Coding Tracker",
+    "name": "EXAMPLE",
     "unit": "Hours",
     "type": "int",
     "color": "shibafu"
@@ -59,6 +59,8 @@ headers = {
 # print(response.text)
 
 #------------------DEL METHOD
-delete_pixel = f"{pixela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}/{formatted_date}"
-response = requests.delete(url=delete_pixel, headers=headers)
-print(response.text)
+# delete_pixel = f"{pixela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}/{formatted_date}"
+# response = requests.delete(url=delete_pixel, headers=headers)
+# print(response.text)
+
+"""Look here for further documentation to customize the tracker for you https://pixe.la/"""
